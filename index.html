@@ -64,6 +64,12 @@ header.top h1 { font-size: clamp(17px, 2.4vw, 22px); color: #ffffff; letter-spac
 header.top .sub { font-size: 12.5px; color: var(--muted); max-width: 62ch; line-height: 1.45; }
 header.top .cite { margin-left: auto; font-size: 11px; color: var(--muted); text-align: right; max-width: 34ch; line-height: 1.5; }
 header.top .cite a { color: var(--link); }
+.lang-btn {
+  background: #111; color: #fff; border: 1px solid #444; border-radius: 4px;
+  padding: 4px 10px; font-size: 11px; font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600; cursor: pointer; margin-bottom: 6px; letter-spacing: .03em;
+}
+.lang-btn:hover { background: #1c1c1c; border-color: var(--accent-teal); }
 
 .layout {
   display: grid;
@@ -265,13 +271,14 @@ footer.bottom a { color: var(--link); }
 
 <header class="top">
   <div>
-    <h1>VERA-MX | Valores de referencia y Estado de las Reservas de Agua para el Ambiente de México</h1>
-    <div class="sub">Límites internacionales, mosaico de las 757 cuencas hidrológicas de México, red hidrográfica continua, factibilidad de reservas potenciales de agua, y balance de disponibilidad frente a los valores de referencia de caudal ecológico.</div>
+    <h1 data-i18n="h1_title">VERA-MX | Valores de referencia y Estado de las Reservas de Agua para el Ambiente de México</h1>
+    <div class="sub" data-i18n="h1_sub">Límites internacionales, mosaico de las 757 cuencas hidrológicas de México, red hidrográfica continua, factibilidad de reservas potenciales de agua, y balance de disponibilidad frente a los valores de referencia de caudal ecológico.</div>
   </div>
   <div class="cite">
-    Basado en Salinas-Rodríguez &amp; Martínez Pacheco (2024), <i>Diversity</i> 16(3):190.
+    <button id="lang-toggle" class="lang-btn" type="button" title="Español / English">ES <span style="opacity:.4;">|</span> EN</button>
+    <div data-i18n="h1_cite">Basado en Salinas-Rodríguez &amp; Martínez Pacheco (2024), <i>Diversity</i> 16(3):190.
     <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">doi.org/10.3390/d16030190</a><br>
-    Publicado bajo el principio de acceso abierto de <a href="https://secihti.mx/secihti/" target="_blank" rel="noopener">SECIHTI</a>
+    Publicado bajo el principio de acceso abierto de <a href="https://secihti.mx/secihti/" target="_blank" rel="noopener">SECIHTI</a></div>
   </div>
 </header>
 
@@ -279,52 +286,52 @@ footer.bottom a { color: var(--link); }
   <aside class="sidebar">
 
     <div class="section">
-      <h2>Panel cartográfico</h2>
+      <h2 data-i18n="h2_panel">Panel cartográfico</h2>
       <div id="theme-options"></div>
     </div>
 
     <div class="section" id="legend-section">
-      <h2>Simbología</h2>
+      <h2 data-i18n="h2_legend">Simbología</h2>
       <div id="legend-body"></div>
       <div id="rivers-legend-note" style="margin-top:10px; font-size:10.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:8px;">
-        Red hidrográfica de México por orden de corriente (RIV_ORD, HydroATLAS): a mayor descarga media anual, línea más clara y gruesa. Se dibuja debajo de las cuencas, visibles por transparencia. Los órdenes 1 y 2 (&gt;10,000 m³/s) no se presentan en el territorio mexicano dentro de este recorte.
+        <span data-i18n="rivers_legend_note"></span>
         <div style="margin-top:6px; display:flex; flex-direction:column; gap:2px;">
-          <div class="legend-item"><span style="display:inline-block;width:20px;height:3px;background:#6bb0e0;margin-right:6px;"></span>Orden 3 · 1,000–10,000 m³/s</div>
-          <div class="legend-item"><span style="display:inline-block;width:20px;height:2px;background:#3d84c4;margin-right:6px;"></span>Orden 4 · 100–1,000</div>
-          <div class="legend-item"><span style="display:inline-block;width:20px;height:1px;background:#215fa0;margin-right:6px;"></span>Orden 5 · 10–100</div>
-          <div class="legend-item"><span style="display:inline-block;width:20px;height:1px;background:#0f3c73;margin-right:6px;"></span>Orden 6 · 1–10</div>
+          <div class="legend-item"><span style="display:inline-block;width:20px;height:3px;background:#6bb0e0;margin-right:6px;"></span><span data-i18n="riv_ord_3"></span></div>
+          <div class="legend-item"><span style="display:inline-block;width:20px;height:2px;background:#3d84c4;margin-right:6px;"></span><span data-i18n="riv_ord_4"></span></div>
+          <div class="legend-item"><span style="display:inline-block;width:20px;height:1px;background:#215fa0;margin-right:6px;"></span><span data-i18n="riv_ord_5"></span></div>
+          <div class="legend-item"><span style="display:inline-block;width:20px;height:1px;background:#0f3c73;margin-right:6px;"></span><span data-i18n="riv_ord_6"></span></div>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>Filtros</h2>
+      <h2 data-i18n="h2_filters">Filtros</h2>
       <div class="toggle-row">
         <input type="checkbox" id="chk-highlight-reserve">
-        <label for="chk-highlight-reserve">Resaltar cuencas con reserva ambiental vigente</label>
+        <label for="chk-highlight-reserve" data-i18n="f_highlight">Resaltar cuencas con reserva ambiental vigente</label>
       </div>
       <div class="toggle-row">
         <input type="checkbox" id="chk-only-potential">
-        <label for="chk-only-potential">Mostrar solo cuencas con reserva potencial factible (media–muy alta)</label>
+        <label for="chk-only-potential" data-i18n="f_potential">Mostrar solo cuencas con reserva potencial factible (media–muy alta)</label>
       </div>
       <div class="toggle-row">
         <input type="checkbox" id="chk-show-rivers" checked>
-        <label for="chk-show-rivers">Mostrar red hidrográfica de México (RIV_ORD 3–6)</label>
+        <label for="chk-show-rivers" data-i18n="f_rivers">Mostrar red hidrográfica de México (RIV_ORD 3–6)</label>
       </div>
-      <input type="search" id="search-box" placeholder="Buscar cuenca, región hidrológica o estado…">
+      <input type="search" id="search-box" data-i18n-placeholder="search_ph" placeholder="Buscar cuenca, región hidrológica o estado…">
       <div id="search-results"></div>
     </div>
 
     <div class="section">
-      <h2>Cifras nacionales (757 cuencas)</h2>
+      <h2 data-i18n="h2_stats">Cifras nacionales (757 cuencas)</h2>
       <div class="stat-grid" id="stat-grid"></div>
     </div>
 
     <div class="section">
-      <h2>Metodología, fuente y límites</h2>
+      <h2 data-i18n="h2_method">Metodología, fuente y límites</h2>
       <details class="method">
-        <summary>Objetivos ambientales (clases A–D)</summary>
-        <div class="body">
+        <summary data-i18n="m1_summary">Objetivos ambientales (clases A–D)</summary>
+        <div class="body" data-i18n="m1_body">
           <p>Cada cuenca recibe una clase según el cruce entre presión/demanda de uso del agua y su importancia ecológica (áreas naturales protegidas, sitios Ramsar, vacíos de conservación epicontinental), conforme a la matriz de la NMX-AA-159-SCFI-2012:</p>
           <ul>
             <li><b>A — Muy buen</b> estado de conservación deseado (valor de referencia: 59% del escurrimiento medio anual).</li>
@@ -336,34 +343,34 @@ footer.bottom a { color: var(--link); }
         </div>
       </details>
       <details class="method">
-        <summary>Factibilidad de reservas potenciales</summary>
-        <div class="body">
+        <summary data-i18n="m2_summary">Factibilidad de reservas potenciales</summary>
+        <div class="body" data-i18n="m2_body">
           <p>Ranking basado en P = F<sub>disp</sub> + F<sub>ci</sub> + F<sub>bans</sub> + F<sub>id</sub> + F<sub>inf</sub> + F<sub>gei</sub> + F<sub>pd</sub> (disponibilidad, interés de conservación, vedas, distritos de riego, infraestructura hidráulica, extracción de acuíferos y densidad poblacional). Cortes: muy alta 4.25–5, alta 3.25–4, media 2.25–3, no candidata ≤2; se excluyen cuencas sin disponibilidad media anual o con estrés hídrico ≥10%.</p>
           <div class="debate">La ponderación de cada factor en la ecuación es un juicio experto/normativo, no una calibración estadística — es una decisión metodológica explícita y razonable, pero discutible frente a esquemas de priorización basados en optimización (p. ej. MARXAN) u otros pesos relativos.</div>
         </div>
       </details>
       <details class="method">
-        <summary>Balance de disponibilidad</summary>
-        <div class="body">
+        <summary data-i18n="m3_summary">Balance de disponibilidad</summary>
+        <div class="body" data-i18n="m3_body">
           <p>Diferencia entre la disponibilidad media anual vigente y el volumen de referencia de caudal ecológico según la clase de objetivo ambiental de cada cuenca (superávit = agua suficiente para instrumentar la reserva sin estudios adicionales de reasignación; déficit = requeriría estudios de reconstrucción del régimen de caudal ecológico).</p>
         </div>
       </details>
       <details class="method">
-        <summary>Red hidrográfica de México</summary>
-        <div class="body">
+        <summary data-i18n="m4_summary">Red hidrográfica de México</summary>
+        <div class="body" data-i18n="m4_body">
           <p>Tramos de la red HydroATLAS/HydroRIVERS de ríos de flujo libre (Grill &amp; Lehner 2019), recortada por el autor a la extensión máxima del visor (<span class="mono">FFR_river_network_clip</span>) y unidos aquí con <span class="mono">mxbasffr</span> por identificador de tramo (no por el país que le asigna el recorte global, lo que corrige la apariencia punteada que tenía el canal fronterizo del Bravo/Grande — su etiqueta de país alterna tramo a tramo en la fuente original aunque geométricamente es un solo río continuo). Solo se muestran los 24,880 tramos que caen dentro de una cuenca mexicana, que heredan de ella el objetivo ambiental y el balance de disponibilidad. Simbolización por orden de corriente (<span class="mono">RIV_ORD</span>, clasificación logarítmica de descarga media anual a largo plazo definida en HydroATLAS), replicando la configuración del proyecto ArcGIS original: grosor 4 pt en orden 1 (&gt;100,000 m³/s), 3 pt en órdenes 2–3 (1,000–100,000), 2 pt en orden 4 (100–1,000) y 1 pt en órdenes 5–6 (1–100); color en degradado de azul, más claro y visible cuanto mayor la descarga. En México, dentro de este recorte, solo aparecen los órdenes 3 a 6 (no hay tramos de orden 1, 2 ni 7–10).</p>
           <div class="debate">La red hidrográfica de los países vecinos (que en una versión anterior de este visor se mostraba como referencia de continuidad) se retiró: incluso limitada a los ríos mayores, añadía varios megabytes que dificultaban la carga sin aportar información analítica — solo contexto visual. El límite internacional y el mosaico de países vecinos sí se conservan, ya que pesan poco y ubican a México en su entorno regional.</div>
         </div>
       </details>
       <details class="method">
-        <summary>Límites internacionales y extensión del visor</summary>
-        <div class="body">
+        <summary data-i18n="m5_summary">Límites internacionales y extensión del visor</summary>
+        <div class="body" data-i18n="m5_body">
           <p>México y los 16 países de contexto (Estados Unidos, Centroamérica, el Caribe, Colombia y Venezuela) provienen de una capa de límites internacionales proporcionada por el autor (<span class="mono">Mapa_paises_mundo</span>), recortada a la extensión del visor y simplificada para desempeño web. Reemplaza la versión preliminar de este visor, que aproximaba el contorno de México disolviendo la unión de las 757 cuencas a falta de una capa de límites propia. La vista inicial y el límite de alejamiento (zoom out) del visor quedan fijos al territorio de México; los países vecinos y su red hidrográfica siguen visibles como contexto y se pueden explorar acercándose (zoom in), pero no es el punto de partida del mapa.</p>
         </div>
       </details>
       <details class="method">
-        <summary>Fuente, vigencia y nota de transparencia</summary>
-        <div class="body">
+        <summary data-i18n="m6_summary">Fuente, vigencia y nota de transparencia</summary>
+        <div class="body" data-i18n="m6_body">
           <p>Geometría y atributos de cuencas: bases de datos proporcionadas por el autor (CONAGUA, CONANP, CONABIO, CONAPO, INEGI), actualización 2022, agregadas a las 757 cuencas hidrológicas (Acuerdo SEMARNAT/DOF 2020). Reproyectadas de Lambert Cónica Conforme (ITRF2008) a WGS84 para este visor; geometrías simplificadas (~93% de reducción de vértices) para desempeño web sin alterar los límites de cuenca a escala nacional. La red de ríos y los límites internacionales ya venían en coordenadas geográficas y no requirieron reproyección.</p>
           <p>Fuentes: (1) Salinas-Rodríguez, S.A. &amp; Martínez Pacheco, A. (2024). <i>Diversity</i>, 16(3), 190. <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">doi.org/10.3390/d16030190</a>. (2) Bases de datos del artículo, Figshare: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">doi.org/10.6084/m9.figshare.33940636</a>. (3) Linke, S., Lehner, B., Ouellet Dallaire, C. <i>et al.</i> (2019). Global hydro-environmental sub-basin and river reach characteristics at high spatial resolution. <i>Scientific Data</i>, 6, 283. <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">doi.org/10.1038/s41597-019-0300-6</a> (fuente de la red de ríos de flujo libre). (4) Límites internacionales y red hidrográfica regional: capas proporcionadas por el autor.</p>
           <div class="debate">El conteo de cuencas con reserva ambiental vigente (no revocada) calculado aquí directamente del shapefile es 268, ligeramente distinto de las 266 citadas en el texto del artículo — probablemente por versión de base de datos o redondeo editorial; ambas cifras son consistentes entre sí. Los polígonos y balances reflejan el corte 2022: actualizaciones posteriores de disponibilidad media anual o nuevos decretos de reserva no están incorporados.</div>
@@ -375,23 +382,23 @@ footer.bottom a { color: var(--link); }
 
   <main class="map-container">
     <div id="map"></div>
-    <div class="map-hint">Herramienta identificador activa: clic en una cuenca para ver su tabla de atributos</div>
+    <div class="map-hint" data-i18n="map_hint">Herramienta identificador activa: clic en una cuenca para ver su tabla de atributos</div>
     <div class="boxplot-panel" id="boxplot-panel">
       <h3 id="boxplot-title">Distribución</h3>
       <div id="boxplot-svg"></div>
     </div>
     <div class="identify-panel" id="identify-panel">
-      <button class="identify-close" id="identify-close" title="Cerrar">×</button>
-      <div style="font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--accent-teal); margin-bottom:8px;">Identificador de rasgos</div>
+      <button class="identify-close" id="identify-close" data-i18n-title="tb_close" title="Cerrar">×</button>
+      <div style="font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--accent-teal); margin-bottom:8px;" data-i18n="identify_header">Identificador de rasgos</div>
       <div id="identify-content"></div>
     </div>
     <div class="map-footer-strip">
-      <div>Datos: CONAGUA, CONANP, CONABIO, CONAPO, INEGI (2022) · Autor: Sergio A. Salinas-Rodríguez, ECOSUR (<a href="https://orcid.org/0000-0002-5566-1987" target="_blank" rel="noopener">ORCID</a>) · Artículo: <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">Diversity 2024, 16(3), 190</a> · Bases de datos: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">Figshare</a> · Red hidrográfica: <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">Linke et al. 2019</a></div>
-      <div class="footer-toggle" id="footer-toggle">▾ Créditos, financiamiento y licencia</div>
+      <div data-i18n="footer_data">Datos: CONAGUA, CONANP, CONABIO, CONAPO, INEGI (2022) · Autor: Sergio A. Salinas-Rodríguez, ECOSUR (<a href="https://orcid.org/0000-0002-5566-1987" target="_blank" rel="noopener">ORCID</a>) · Artículo: <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">Diversity 2024, 16(3), 190</a> · Bases de datos: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">Figshare</a> · Red hidrográfica: <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">Linke et al. 2019</a></div>
+      <div class="footer-toggle" id="footer-toggle" data-i18n="footer_toggle">▾ Créditos, financiamiento y licencia</div>
       <div class="footer-more" id="footer-more">
-        <div class="proj-line">Sistema de Información Estratégica de Reservas de Agua para la Protección del Régimen de Caudales y Variación de Niveles de Ríos y Humedales, proyecto de colaboración ECOSUR-WWF (ECOSUR/CONVENIO/E/030/VIH/2022)</div>
-        <div class="proj-line">Ecohidrología para la Sustentabilidad y Gobernanza del Agua y Cuencas para el Bien Común, Proyecto Nacional de Investigación e Incidencia (PRONAII, clave 318956) del Programa Nacional Estratégico para el tema del Agua impulsado, liderado y financiado por el Consejo Nacional de Ciencia y Tecnología (2022–2024)</div>
-        <div>CC BY 4.0 · Acceso abierto conforme a la política de SECIHTI</div>
+        <div class="proj-line" data-i18n="proj_line1">Sistema de Información Estratégica de Reservas de Agua para la Protección del Régimen de Caudales y Variación de Niveles de Ríos y Humedales, proyecto de colaboración ECOSUR-WWF (ECOSUR/CONVENIO/E/030/VIH/2022)</div>
+        <div class="proj-line" data-i18n="proj_line2">Ecohidrología para la Sustentabilidad y Gobernanza del Agua y Cuencas para el Bien Común, Proyecto Nacional de Investigación e Incidencia (PRONAII, clave 318956) del Programa Nacional Estratégico para el tema del Agua impulsado, liderado y financiado por el Consejo Nacional de Ciencia y Tecnología (2022–2024)</div>
+        <div data-i18n="cc_by">CC BY 4.0 · Acceso abierto conforme a la política de SECIHTI</div>
       </div>
     </div>
   </main>
@@ -399,7 +406,7 @@ footer.bottom a { color: var(--link); }
 
 <footer class="bottom">
   <div class="contact-block">
-    <div class="contact-text">
+    <div class="contact-text" data-i18n="contact_text">
       <b>Contacto:</b> Grupo Académico de Manejo Sustentable de Cuencas y Zonas Costeras — Departamento de Ciencias de la Sustentabilidad, El Colegio de la Frontera Sur (ECOSUR), Unidad Villahermosa.<br>
       Dr. Sergio A. Salinas-Rodríguez, <a href="mailto:ssalinas@ecosur.mx">ssalinas@ecosur.mx</a><br>
       Carretera Villahermosa–Reforma km 15.5, El Guineo II, C.P. 86280, Villahermosa, Tabasco
@@ -423,18 +430,173 @@ footer.bottom a { color: var(--link); }
   const CONTEXT_COUNTRIES = JSON.parse(document.getElementById('context-data').textContent);
   const RIVERS = JSON.parse(document.getElementById('rivers-data').textContent);
 
+  // ---------- Language / i18n ----------
+  const I18N = {
+    es: {
+      h1_title: 'VERA-MX | Valores de referencia y Estado de las Reservas de Agua para el Ambiente de México',
+      h1_sub: 'Límites internacionales, mosaico de las 757 cuencas hidrológicas de México, red hidrográfica continua, factibilidad de reservas potenciales de agua, y balance de disponibilidad frente a los valores de referencia de caudal ecológico.',
+      h1_cite: 'Basado en Salinas-Rodríguez &amp; Martínez Pacheco (2024), <i>Diversity</i> 16(3):190.\n    <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">doi.org/10.3390/d16030190</a><br>\n    Publicado bajo el principio de acceso abierto de <a href="https://secihti.mx/secihti/" target="_blank" rel="noopener">SECIHTI</a>',
+      h2_panel: 'Panel cartográfico',
+      h2_legend: 'Simbología',
+      h2_filters: 'Filtros',
+      h2_stats: 'Cifras nacionales (757 cuencas)',
+      h2_method: 'Metodología, fuente y límites',
+      f_highlight: 'Resaltar cuencas con reserva ambiental vigente',
+      f_potential: 'Mostrar solo cuencas con reserva potencial factible (media–muy alta)',
+      f_rivers: 'Mostrar red hidrográfica de México (RIV_ORD 3–6)',
+      search_ph: 'Buscar cuenca, región hidrológica o estado…',
+      rivers_legend_note: 'Red hidrográfica de México por orden de corriente (RIV_ORD, HydroATLAS): a mayor descarga media anual, línea más clara y gruesa. Se dibuja debajo de las cuencas, visibles por transparencia. Los órdenes 1 y 2 (&gt;10,000 m³/s) no se presentan en el territorio mexicano dentro de este recorte.',
+      riv_ord_3: 'Orden 3 · 1,000–10,000 m³/s', riv_ord_4: 'Orden 4 · 100–1,000', riv_ord_5: 'Orden 5 · 10–100', riv_ord_6: 'Orden 6 · 1–10',
+      m1_summary: 'Objetivos ambientales (clases A–D)',
+      m1_body: '<p>Cada cuenca recibe una clase según el cruce entre presión/demanda de uso del agua y su importancia ecológica (áreas naturales protegidas, sitios Ramsar, vacíos de conservación epicontinental), conforme a la matriz de la NMX-AA-159-SCFI-2012:</p>\n          <ul>\n            <li><b>A — Muy buen</b> estado de conservación deseado (valor de referencia: 59% del escurrimiento medio anual).</li>\n            <li><b>B — Buen</b> estado (44%).</li>\n            <li><b>C — Estado moderado</b> (35%).</li>\n            <li><b>D — Estado deficiente</b> (26%).</li>\n          </ul>\n          <div class="debate">Los valores de referencia son de tipo "look-up table" (porcentaje del escurrimiento medio anual, enfoque tipo Tennant) aplicados a escala anual/nacional. No distinguen entre corrientes perennes, intermitentes o efímeras, ni capturan variabilidad intra-anual o de años secos/húmedos. Son adecuados para planeación y priorización a escala nacional, no para la asignación de caudal ecológico a escala de sitio, donde se recomiendan métodos ecohidrológicos holísticos o de simulación de hábitat.</div>',
+      m2_summary: 'Factibilidad de reservas potenciales',
+      m2_body: '<p>Ranking basado en P = F<sub>disp</sub> + F<sub>ci</sub> + F<sub>bans</sub> + F<sub>id</sub> + F<sub>inf</sub> + F<sub>gei</sub> + F<sub>pd</sub> (disponibilidad, interés de conservación, vedas, distritos de riego, infraestructura hidráulica, extracción de acuíferos y densidad poblacional). Cortes: muy alta 4.25–5, alta 3.25–4, media 2.25–3, no candidata ≤2; se excluyen cuencas sin disponibilidad media anual o con estrés hídrico ≥10%.</p>\n          <div class="debate">La ponderación de cada factor en la ecuación es un juicio experto/normativo, no una calibración estadística — es una decisión metodológica explícita y razonable, pero discutible frente a esquemas de priorización basados en optimización (p. ej. MARXAN) u otros pesos relativos.</div>',
+      m3_summary: 'Balance de disponibilidad',
+      m3_body: '<p>Diferencia entre la disponibilidad media anual vigente y el volumen de referencia de caudal ecológico según la clase de objetivo ambiental de cada cuenca (superávit = agua suficiente para instrumentar la reserva sin estudios adicionales de reasignación; déficit = requeriría estudios de reconstrucción del régimen de caudal ecológico).</p>',
+      m4_summary: 'Red hidrográfica de México',
+      m4_body: '<p>Tramos de la red HydroATLAS/HydroRIVERS de ríos de flujo libre (Grill &amp; Lehner 2019), recortada por el autor a la extensión máxima del visor (<span class="mono">FFR_river_network_clip</span>) y unidos aquí con <span class="mono">mxbasffr</span> por identificador de tramo (no por el país que le asigna el recorte global, lo que corrige la apariencia punteada que tenía el canal fronterizo del Bravo/Grande — su etiqueta de país alterna tramo a tramo en la fuente original aunque geométricamente es un solo río continuo). Solo se muestran los 24,880 tramos que caen dentro de una cuenca mexicana, que heredan de ella el objetivo ambiental y el balance de disponibilidad. Simbolización por orden de corriente (<span class="mono">RIV_ORD</span>, clasificación logarítmica de descarga media anual a largo plazo definida en HydroATLAS), replicando la configuración del proyecto ArcGIS original: grosor 4 pt en orden 1 (&gt;100,000 m³/s), 3 pt en órdenes 2–3 (1,000–100,000), 2 pt en orden 4 (100–1,000) y 1 pt en órdenes 5–6 (1–100); color en degradado de azul, más claro y visible cuanto mayor la descarga. En México, dentro de este recorte, solo aparecen los órdenes 3 a 6 (no hay tramos de orden 1, 2 ni 7–10).</p>\n          <div class="debate">La red hidrográfica de los países vecinos (que en una versión anterior de este visor se mostraba como referencia de continuidad) se retiró: incluso limitada a los ríos mayores, añadía varios megabytes que dificultaban la carga sin aportar información analítica — solo contexto visual. El límite internacional y el mosaico de países vecinos sí se conservan, ya que pesan poco y ubican a México en su entorno regional.</div>',
+      m5_summary: 'Límites internacionales y extensión del visor',
+      m5_body: '<p>México y los 16 países de contexto (Estados Unidos, Centroamérica, el Caribe, Colombia y Venezuela) provienen de una capa de límites internacionales proporcionada por el autor (<span class="mono">Mapa_paises_mundo</span>), recortada a la extensión del visor y simplificada para desempeño web. Reemplaza la versión preliminar de este visor, que aproximaba el contorno de México disolviendo la unión de las 757 cuencas a falta de una capa de límites propia. La vista inicial y el límite de alejamiento (zoom out) del visor quedan fijos al territorio de México; los países vecinos y su red hidrográfica siguen visibles como contexto y se pueden explorar acercándose (zoom in), pero no es el punto de partida del mapa.</p>',
+      m6_summary: 'Fuente, vigencia y nota de transparencia',
+      m6_body: '<p>Geometría y atributos de cuencas: bases de datos proporcionadas por el autor (CONAGUA, CONANP, CONABIO, CONAPO, INEGI), actualización 2022, agregadas a las 757 cuencas hidrológicas (Acuerdo SEMARNAT/DOF 2020). Reproyectadas de Lambert Cónica Conforme (ITRF2008) a WGS84 para este visor; geometrías simplificadas (~93% de reducción de vértices) para desempeño web sin alterar los límites de cuenca a escala nacional. La red de ríos y los límites internacionales ya venían en coordenadas geográficas y no requirieron reproyección.</p>\n          <p>Fuentes: (1) Salinas-Rodríguez, S.A. &amp; Martínez Pacheco, A. (2024). <i>Diversity</i>, 16(3), 190. <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">doi.org/10.3390/d16030190</a>. (2) Bases de datos del artículo, Figshare: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">doi.org/10.6084/m9.figshare.33940636</a>. (3) Linke, S., Lehner, B., Ouellet Dallaire, C. <i>et al.</i> (2019). Global hydro-environmental sub-basin and river reach characteristics at high spatial resolution. <i>Scientific Data</i>, 6, 283. <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">doi.org/10.1038/s41597-019-0300-6</a> (fuente de la red de ríos de flujo libre). (4) Límites internacionales y red hidrográfica regional: capas proporcionadas por el autor.</p>\n          <div class="debate">El conteo de cuencas con reserva ambiental vigente (no revocada) calculado aquí directamente del shapefile es 268, ligeramente distinto de las 266 citadas en el texto del artículo — probablemente por versión de base de datos o redondeo editorial; ambas cifras son consistentes entre sí. Los polígonos y balances reflejan el corte 2022: actualizaciones posteriores de disponibilidad media anual o nuevos decretos de reserva no están incorporados.</div>',
+      map_hint: 'Herramienta identificador activa: clic en una cuenca para ver su tabla de atributos',
+      identify_header: 'Identificador de rasgos',
+      footer_data: 'Datos: CONAGUA, CONANP, CONABIO, CONAPO, INEGI (2022) · Autor: Sergio A. Salinas-Rodríguez, ECOSUR (<a href="https://orcid.org/0000-0002-5566-1987" target="_blank" rel="noopener">ORCID</a>) · Artículo: <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">Diversity 2024, 16(3), 190</a> · Bases de datos: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">Figshare</a> · Red hidrográfica: <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">Linke et al. 2019</a>',
+      footer_toggle: '▾ Créditos, financiamiento y licencia',
+      footer_toggle_label: 'Créditos, financiamiento y licencia',
+      proj_line1: 'Sistema de Información Estratégica de Reservas de Agua para la Protección del Régimen de Caudales y Variación de Niveles de Ríos y Humedales, proyecto de colaboración ECOSUR-WWF (ECOSUR/CONVENIO/E/030/VIH/2022)',
+      proj_line2: 'Ecohidrología para la Sustentabilidad y Gobernanza del Agua y Cuencas para el Bien Común, Proyecto Nacional de Investigación e Incidencia (PRONAII, clave 318956) del Programa Nacional Estratégico para el tema del Agua impulsado, liderado y financiado por el Consejo Nacional de Ciencia y Tecnología (2022–2024)',
+      cc_by: 'CC BY 4.0 · Acceso abierto conforme a la política de SECIHTI',
+      contact_text: '<b>Contacto:</b> Grupo Académico de Manejo Sustentable de Cuencas y Zonas Costeras — Departamento de Ciencias de la Sustentabilidad, El Colegio de la Frontera Sur (ECOSUR), Unidad Villahermosa.<br>\n      Dr. Sergio A. Salinas-Rodríguez, <a href="mailto:ssalinas@ecosur.mx">ssalinas@ecosur.mx</a><br>\n      Carretera Villahermosa–Reforma km 15.5, El Guineo II, C.P. 86280, Villahermosa, Tabasco',
+      theme_obj_label: 'Objetivos ambientales para caudal ecológico',
+      theme_obj_desc: 'Clase (A–D) de estado de conservación deseado del régimen hidrológico, según NMX-AA-159-SCFI-2012.',
+      theme_feas_label: 'Factibilidad de reserva potencial de agua',
+      theme_feas_desc: 'Ranking de prioridad para estudios de caudal ecológico y declaratoria de reserva, según disponibilidad, interés de conservación y presiones de uso.',
+      theme_balance_label: 'Balance: disponibilidad vs. valor de referencia',
+      theme_balance_desc: 'Disponibilidad media anual vigente menos el volumen de referencia de caudal ecológico (Hm³/año) según la clase de objetivo ambiental de cada cuenca.',
+      obj_A: 'A — Muy buen estado (59% EMA)', obj_B: 'B — Buen estado (44% EMA)', obj_C: 'C — Estado moderado (35% EMA)', obj_D: 'D — Estado deficiente (26% EMA)',
+      feas_muyalta: 'Muy alta', feas_alta: 'Alta', feas_media: 'Media', feas_notcand: 'No candidata', feas_excluded: 'Excluida / sin disponibilidad',
+      balance_deficit: 'déficit ≤ -300 Hm³', balance_surplus: 'superávit ≥ +300 Hm³',
+      stat_total: 'Cuencas totales', stat_reserve: 'Con reserva ambiental vigente', stat_feasible: 'Reservas potenciales factibles',
+      stat_deficit: 'En déficit de disponibilidad', stat_classA: 'Objetivo clase A', stat_classD: 'Objetivo clase D',
+      id_state: 'Estado(s)', id_area: 'Área', id_hydro_basin: 'Cuenca hidrológica',
+      id_table_feas: 'Tabla de atributos — Factibilidad de Reservas Potenciales de Agua',
+      id_feas_cat: 'Categoría de factibilidad', id_feas_score: 'Puntaje ponderado (P)', id_excluded_score: '— (excluida)',
+      id_gea: 'Vacío de conservación (GEA)', id_water_stress: 'Estrés hídrico', id_avail_pos: 'Disponibilidad positiva',
+      id_ban: 'Veda de agua (BAN)', id_irrigation: 'Distrito de riego', id_dams: 'Presas registradas',
+      id_pu_reserve: 'Reserva potencial público-urbana', id_pop2020: 'Población 2020', id_popdens: 'Densidad poblacional 2020',
+      id_table_obj: 'Tabla de atributos — Objetivos Ambientales',
+      id_obj_class: 'Clase de objetivo ambiental', id_conserv: 'Estado de conservación deseado', id_ecoimp: 'Importancia ecológica',
+      id_pressure: 'Presión de uso del agua', id_refval: 'Valor de referencia (% EMA)', id_refvol: 'Volumen de referencia',
+      id_avail_d: 'Disponibilidad media anual (D)', id_balance: 'Balance (D − valor de referencia)',
+      id_reserve_active: 'Reserva ambiental vigente', id_reserve_vol: 'Volumen de la reserva',
+      si: 'Sí', no: 'No', revoked: 'Revocada', dash: '—',
+      riv_country: 'País', riv_basin: 'Cuenca (México)', riv_len: 'Longitud del tramo', riv_dis: 'Caudal medio anual',
+      riv_obj: 'Objetivo ambiental de la cuenca', riv_balance: 'Balance disponibilidad', riv_csi: 'Índice de conectividad (CSI)', riv_pressure: 'Principal presión (CSI)',
+      riv_order_label: 'Orden',
+      box_obj_title: 'Balance de disponibilidad (Hm³/año) por clase de objetivo ambiental',
+      box_tukey_suffix: ' (enfocado en Q1−1.5·RIC a Q3+1.5·RIC)',
+      box_feas_title: 'Puntaje de factibilidad (P) por categoría',
+      box_balance_title: 'Balance de disponibilidad (Hm³/año), todas las cuencas',
+      box_national: 'Nacional (n=757)',
+      tb_zoomin: 'Acercar (zoom in)', tb_zoomout: 'Alejar (zoom out)', tb_identify: 'Identificador de rasgos (clic en el mapa)',
+      tb_extent: 'Extensión completa (México)', tb_north: 'Norte', tb_close: 'Cerrar',
+      unit_people: 'hab.', unit_people_km2: 'hab./km²',
+      es_very_good: 'Muy bueno', es_good: 'Bueno', es_moderate: 'Moderado', es_deficient: 'Deficiente',
+      es_low: 'Baja', es_medium: 'Media', es_high: 'Alta', es_very_high: 'Muy alta', es_alto: 'Alto', es_bajo: 'Bajo',
+    },
+    en: {
+      h1_title: 'VERA-MX | Reference Values and Status of Mexico\u2019s Environmental Water Reserves',
+      h1_sub: 'International boundaries, mosaic of Mexico\u2019s 757 hydrological basins, continuous river network, feasibility of potential water reserves, and availability balance against environmental flow reference values.',
+      h1_cite: 'Based on Salinas-Rodríguez &amp; Martínez Pacheco (2024), <i>Diversity</i> 16(3):190.\n    <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">doi.org/10.3390/d16030190</a><br>\n    Published under SECIHTI\u2019s open-access principle: <a href="https://secihti.mx/secihti/" target="_blank" rel="noopener">SECIHTI</a>',
+      h2_panel: 'Map panel',
+      h2_legend: 'Legend',
+      h2_filters: 'Filters',
+      h2_stats: 'National figures (757 basins)',
+      h2_method: 'Methodology, sources and limitations',
+      f_highlight: 'Highlight basins with an active environmental water reserve',
+      f_potential: 'Show only basins with feasible potential reserves (medium–very high)',
+      f_rivers: 'Show Mexico\u2019s river network (RIV_ORD 3–6)',
+      search_ph: 'Search basin, hydrological region or state…',
+      rivers_legend_note: 'Mexico\u2019s river network by stream order (RIV_ORD, HydroATLAS): the higher the mean annual discharge, the lighter and thicker the line. Drawn beneath the basins, visible through transparency. Orders 1 and 2 (&gt;10,000 m³/s) do not occur within Mexican territory in this clip.',
+      riv_ord_3: 'Order 3 · 1,000–10,000 m³/s', riv_ord_4: 'Order 4 · 100–1,000', riv_ord_5: 'Order 5 · 10–100', riv_ord_6: 'Order 6 · 1–10',
+      m1_summary: 'Environmental objectives (classes A–D)',
+      m1_body: '<p>Each basin is assigned a class based on the intersection of water-use pressure/demand and its ecological importance (protected natural areas, Ramsar sites, epicontinental conservation gaps), per the NMX-AA-159-SCFI-2012 matrix:</p>\n          <ul>\n            <li><b>A — Very good</b> desired conservation status (reference value: 59% of mean annual runoff).</li>\n            <li><b>B — Good</b> status (44%).</li>\n            <li><b>C — Moderate</b> status (35%).</li>\n            <li><b>D — Deficient</b> status (26%).</li>\n          </ul>\n          <div class="debate">The reference values are "look-up table" type (percentage of mean annual runoff, a Tennant-type approach) applied at an annual/national scale. They do not distinguish between perennial, intermittent or ephemeral streams, nor capture intra-annual or wet/dry-year variability. They are suitable for national-scale planning and prioritization, not for site-scale environmental flow allocation, where holistic ecohydrological or habitat-simulation methods are recommended.</div>',
+      m2_summary: 'Feasibility of potential reserves',
+      m2_body: '<p>Ranking based on P = F<sub>disp</sub> + F<sub>ci</sub> + F<sub>bans</sub> + F<sub>id</sub> + F<sub>inf</sub> + F<sub>gei</sub> + F<sub>pd</sub> (availability, conservation interest, water-use bans, irrigation districts, hydraulic infrastructure, aquifer extraction and population density). Cutoffs: very high 4.25–5, high 3.25–4, medium 2.25–3, not a candidate ≤2; basins with no mean annual availability or with water stress ≥10% are excluded.</p>\n          <div class="debate">The weighting of each factor in the equation is an expert/normative judgment, not a statistical calibration — an explicit and reasonable methodological choice, but debatable against optimization-based prioritization schemes (e.g. MARXAN) or other relative weights.</div>',
+      m3_summary: 'Availability balance',
+      m3_body: '<p>Difference between the current mean annual availability and the environmental-flow reference volume for each basin\u2019s environmental-objective class (surplus = enough water to establish the reserve without further reallocation studies; deficit = would require flow-regime restoration studies).</p>',
+      m4_summary: 'Mexico\u2019s river network',
+      m4_body: '<p>Reaches from the HydroATLAS/HydroRIVERS free-flowing rivers network (Grill &amp; Lehner 2019), clipped by the author to the viewer\u2019s maximum extent (<span class="mono">FFR_river_network_clip</span>) and joined here with <span class="mono">mxbasffr</span> by reach identifier (not by the country the global clip assigns it, which fixes the dotted appearance the Rio Grande/Bravo border channel used to have — its country tag alternates reach by reach in the original source even though it is geometrically a single continuous river). Only the 24,880 reaches that fall within a Mexican basin are shown; they inherit its environmental objective and availability balance. Symbolized by stream order (<span class="mono">RIV_ORD</span>, the logarithmic long-term mean annual discharge classification defined in HydroATLAS), replicating the original ArcGIS project\u2019s configuration: 4 pt weight for order 1 (&gt;100,000 m³/s), 3 pt for orders 2–3 (1,000–100,000), 2 pt for order 4 (100–1,000) and 1 pt for orders 5–6 (1–100); a blue gradient, lighter and more visible with higher discharge. Within Mexico, in this clip, only orders 3 to 6 occur (no order 1, 2 or 7–10 reaches).</p>\n          <div class="debate">The neighboring countries\u2019 river network (shown in an earlier version of this viewer as a continuity reference) was removed: even limited to major rivers, it added several megabytes that slowed loading without adding analytical information — only visual context. The international boundary and the mosaic of neighboring countries are kept, since they are lightweight and place Mexico within its regional setting.</div>',
+      m5_summary: 'International boundaries and map extent',
+      m5_body: '<p>Mexico and the 16 context countries (United States, Central America, the Caribbean, Colombia and Venezuela) come from an international-boundaries layer provided by the author (<span class="mono">Mapa_paises_mundo</span>), clipped to the viewer\u2019s extent and simplified for web performance. It replaces this viewer\u2019s earlier version, which approximated Mexico\u2019s outline by dissolving the union of the 757 basins for lack of its own boundary layer. The initial view and the zoom-out limit stay fixed to Mexico\u2019s territory; neighboring countries and their river network remain visible as context and can be explored by zooming in, but they are not the map\u2019s starting point.</p>',
+      m6_summary: 'Source, currency and transparency note',
+      m6_body: '<p>Basin geometry and attributes: databases provided by the author (CONAGUA, CONANP, CONABIO, CONAPO, INEGI), 2022 update, aggregated to the 757 hydrological basins (SEMARNAT/DOF Agreement 2020). Reprojected from Lambert Conformal Conic (ITRF2008) to WGS84 for this viewer; geometries simplified (~93% vertex reduction) for web performance without altering basin boundaries at the national scale. The river network and international boundaries already came in geographic coordinates and required no reprojection.</p>\n          <p>Sources: (1) Salinas-Rodríguez, S.A. &amp; Martínez Pacheco, A. (2024). <i>Diversity</i>, 16(3), 190. <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">doi.org/10.3390/d16030190</a>. (2) The article\u2019s databases, Figshare: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">doi.org/10.6084/m9.figshare.33940636</a>. (3) Linke, S., Lehner, B., Ouellet Dallaire, C. <i>et al.</i> (2019). Global hydro-environmental sub-basin and river reach characteristics at high spatial resolution. <i>Scientific Data</i>, 6, 283. <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">doi.org/10.1038/s41597-019-0300-6</a> (source of the free-flowing river network). (4) International boundaries and regional river network: layers provided by the author.</p>\n          <div class="debate">The count of basins with an active (non-revoked) environmental reserve computed here directly from the shapefile is 268, slightly different from the 266 cited in the article\u2019s text — likely due to database version or editorial rounding; both figures are consistent with each other. The polygons and balances reflect the 2022 cut: later updates to mean annual availability or new reserve decrees are not incorporated.</div>',
+      map_hint: 'Identify tool active: click a basin to see its attribute table',
+      identify_header: 'Feature identifier',
+      footer_data: 'Data: CONAGUA, CONANP, CONABIO, CONAPO, INEGI (2022) · Author: Sergio A. Salinas-Rodríguez, ECOSUR (<a href="https://orcid.org/0000-0002-5566-1987" target="_blank" rel="noopener">ORCID</a>) · Article: <a href="https://doi.org/10.3390/d16030190" target="_blank" rel="noopener">Diversity 2024, 16(3), 190</a> · Databases: <a href="https://doi.org/10.6084/m9.figshare.33940636" target="_blank" rel="noopener">Figshare</a> · River network: <a href="https://doi.org/10.1038/s41597-019-0300-6" target="_blank" rel="noopener">Linke et al. 2019</a>',
+      footer_toggle: '▾ Credits, funding and license',
+      footer_toggle_label: 'Credits, funding and license',
+      proj_line1: 'Strategic Information System on Environmental Water Reserves for the Protection of Flow Regimes and River/Wetland Level Variation, an ECOSUR-WWF collaboration project (ECOSUR/CONVENIO/E/030/VIH/2022)',
+      proj_line2: 'Ecohydrology for the Sustainability and Governance of Water and Basins for the Common Good, a National Research and Advocacy Project (PRONAII, no. 318956) of the National Strategic Program on Water, driven, led and funded by Mexico\u2019s National Council of Science and Technology (2022–2024)',
+      cc_by: 'CC BY 4.0 · Open access under SECIHTI\u2019s policy',
+      contact_text: '<b>Contact:</b> Academic Group on Sustainable Watershed and Coastal Zone Management — Department of Sustainability Science, El Colegio de la Frontera Sur (ECOSUR), Villahermosa Unit.<br>\n      Dr. Sergio A. Salinas-Rodríguez, <a href="mailto:ssalinas@ecosur.mx">ssalinas@ecosur.mx</a><br>\n      Carretera Villahermosa–Reforma km 15.5, El Guineo II, C.P. 86280, Villahermosa, Tabasco, Mexico',
+      theme_obj_label: 'Environmental objectives for environmental flows',
+      theme_obj_desc: 'Class (A–D) of desired conservation status of the flow regime, per NMX-AA-159-SCFI-2012.',
+      theme_feas_label: 'Potential water reserve feasibility',
+      theme_feas_desc: 'Priority ranking for environmental-flow studies and reserve declaration, based on availability, conservation interest and use pressures.',
+      theme_balance_label: 'Balance: availability vs. reference value',
+      theme_balance_desc: 'Current mean annual availability minus the environmental-flow reference volume (Hm³/yr) for each basin\u2019s environmental-objective class.',
+      obj_A: 'A — Very good status (59% MAR)', obj_B: 'B — Good status (44% MAR)', obj_C: 'C — Moderate status (35% MAR)', obj_D: 'D — Deficient status (26% MAR)',
+      feas_muyalta: 'Very high', feas_alta: 'High', feas_media: 'Medium', feas_notcand: 'Not a candidate', feas_excluded: 'Excluded / no availability data',
+      balance_deficit: 'deficit ≤ -300 Hm³', balance_surplus: 'surplus ≥ +300 Hm³',
+      stat_total: 'Total basins', stat_reserve: 'With an active environmental reserve', stat_feasible: 'Feasible potential reserves',
+      stat_deficit: 'In availability deficit', stat_classA: 'Class A objective', stat_classD: 'Class D objective',
+      id_state: 'State(s)', id_area: 'Area', id_hydro_basin: 'Hydrological basin',
+      id_table_feas: 'Attribute table — Potential Water Reserve Feasibility',
+      id_feas_cat: 'Feasibility category', id_feas_score: 'Weighted score (P)', id_excluded_score: '— (excluded)',
+      id_gea: 'Conservation gap (GEA)', id_water_stress: 'Water stress', id_avail_pos: 'Positive availability',
+      id_ban: 'Water-use ban (BAN)', id_irrigation: 'Irrigation district', id_dams: 'Registered dams',
+      id_pu_reserve: 'Potential public-urban reserve', id_pop2020: '2020 population', id_popdens: '2020 population density',
+      id_table_obj: 'Attribute table — Environmental Objectives',
+      id_obj_class: 'Environmental objective class', id_conserv: 'Desired conservation status', id_ecoimp: 'Ecological importance',
+      id_pressure: 'Water-use pressure', id_refval: 'Reference value (% MAR)', id_refvol: 'Reference volume',
+      id_avail_d: 'Mean annual availability (D)', id_balance: 'Balance (D − reference value)',
+      id_reserve_active: 'Active environmental reserve', id_reserve_vol: 'Reserve volume',
+      si: 'Yes', no: 'No', revoked: 'Revoked', dash: '—',
+      riv_country: 'Country', riv_basin: 'Basin (Mexico)', riv_len: 'Reach length', riv_dis: 'Mean annual discharge',
+      riv_obj: 'Basin\u2019s environmental objective', riv_balance: 'Availability balance', riv_csi: 'Connectivity Status Index (CSI)', riv_pressure: 'Main pressure (CSI)',
+      riv_order_label: 'Order',
+      box_obj_title: 'Availability balance (Hm³/yr) by environmental-objective class',
+      box_tukey_suffix: ' (focused on Q1−1.5·IQR to Q3+1.5·IQR)',
+      box_feas_title: 'Feasibility score (P) by category',
+      box_balance_title: 'Availability balance (Hm³/yr), all basins',
+      box_national: 'National (n=757)',
+      tb_zoomin: 'Zoom in', tb_zoomout: 'Zoom out', tb_identify: 'Feature identifier (click on the map)',
+      tb_extent: 'Full extent (Mexico)', tb_north: 'North', tb_close: 'Close',
+      unit_people: 'people', unit_people_km2: 'people/km²',
+      es_very_good: 'Very good', es_good: 'Good', es_moderate: 'Moderate', es_deficient: 'Deficient',
+      es_low: 'Low', es_medium: 'Medium', es_high: 'High', es_very_high: 'Very high', es_alto: 'High', es_bajo: 'Low',
+    }
+  };
+  let currentLang = (navigator.language || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
+  function tr(key){ return (I18N[currentLang] && I18N[currentLang][key] !== undefined) ? I18N[currentLang][key] : key; }
+
   // ---------- Color scales ----------
   const OBJ_COLORS = { A: '#1f5f8b', B: '#1e8449', C: '#c9971c', D: '#b13a2e' };
-  const OBJ_LABELS = { A: 'A — Muy buen estado (59% EMA)', B: 'B — Buen estado (44% EMA)', C: 'C — Estado moderado (35% EMA)', D: 'D — Estado deficiente (26% EMA)' };
   const FEAS_COLORS = { 'Muy alta': '#08519c', 'Alta': '#3182bd', 'Media': '#6baed6', 'Not candidate': '#bdd7e7', 'Excluded': '#eff3ff' };
-  const FEAS_LABELS = { 'Muy alta': 'Muy alta', 'Alta': 'Alta', 'Media': 'Media', 'Not candidate': 'No candidata', 'Excluded': 'Excluida / sin disponibilidad' };
   const FEAS_ORDER = ['Muy alta','Alta','Media','Not candidate','Excluded'];
-  const ES = {
-    'Very good': 'Muy bueno', 'Good': 'Bueno', 'Moderate': 'Moderado', 'Deficient': 'Deficiente',
-    'Low': 'Baja', 'Medium': 'Media', 'High': 'Alta', 'Very high': 'Muy alta',
-    'Alto': 'Alto', 'Bajo': 'Bajo'
+  const ES_SOURCE_MAP = {
+    'Very good': 'es_very_good', 'Good': 'es_good', 'Moderate': 'es_moderate', 'Deficient': 'es_deficient',
+    'Low': 'es_low', 'Medium': 'es_medium', 'High': 'es_high', 'Very high': 'es_very_high',
+    'Alto': 'es_alto', 'Bajo': 'es_bajo'
   };
-  function es(v){ return ES[v] !== undefined ? ES[v] : v; }
+  function es(v){ return ES_SOURCE_MAP[v] ? tr(ES_SOURCE_MAP[v]) : v; }
+  function OBJ_LABELS_F(k){ return tr('obj_'+k); }
+  function FEAS_LABELS_F(k){
+    const map = { 'Muy alta':'feas_muyalta', 'Alta':'feas_alta', 'Media':'feas_media', 'Not candidate':'feas_notcand', 'Excluded':'feas_excluded' };
+    return tr(map[k] || k);
+  }
 
   function balanceColor(v){
     if (v === null || v === undefined) return '#9aa39c';
@@ -457,36 +619,36 @@ footer.bottom a { color: var(--link); }
 
   const THEMES = {
     obj: {
-      label: 'Objetivos ambientales para caudal ecológico',
-      desc: 'Clase (A–D) de estado de conservación deseado del régimen hidrológico, según NMX-AA-159-SCFI-2012.',
+      label: () => tr('theme_obj_label'),
+      desc: () => tr('theme_obj_desc'),
       color: f => OBJ_COLORS[f.properties.env_obj] || '#9aa39c',
       legend: () => {
         let h = '';
         ['A','B','C','D'].forEach(k => {
-          h += '<div class="legend-item"><span class="legend-swatch" style="background:'+OBJ_COLORS[k]+'"></span>'+OBJ_LABELS[k]+'</div>';
+          h += '<div class="legend-item"><span class="legend-swatch" style="background:'+OBJ_COLORS[k]+'"></span>'+OBJ_LABELS_F(k)+'</div>';
         });
         return h;
       }
     },
     feas: {
-      label: 'Factibilidad de reserva potencial de agua',
-      desc: 'Ranking de prioridad para estudios de caudal ecológico y declaratoria de reserva, según disponibilidad, interés de conservación y presiones de uso.',
+      label: () => tr('theme_feas_label'),
+      desc: () => tr('theme_feas_desc'),
       color: f => FEAS_COLORS[f.properties.feasibility] || '#eff3ff',
       legend: () => {
         let h = '';
         FEAS_ORDER.forEach(k => {
-          h += '<div class="legend-item"><span class="legend-swatch" style="background:'+FEAS_COLORS[k]+'"></span>'+FEAS_LABELS[k]+'</div>';
+          h += '<div class="legend-item"><span class="legend-swatch" style="background:'+FEAS_COLORS[k]+'"></span>'+FEAS_LABELS_F(k)+'</div>';
         });
         return h;
       }
     },
     balance: {
-      label: 'Balance: disponibilidad vs. valor de referencia',
-      desc: 'Disponibilidad media anual vigente menos el volumen de referencia de caudal ecológico (Hm³/año) según la clase de objetivo ambiental de cada cuenca.',
+      label: () => tr('theme_balance_label'),
+      desc: () => tr('theme_balance_desc'),
       color: f => balanceColor(f.properties.avail_balance),
       legend: () => {
         return '<div class="legend-grad" style="background:linear-gradient(90deg, rgb(176,58,46), #fff, rgb(13,92,92))"></div>'
-          + '<div class="legend-scale-labels"><span>déficit ≤ -300 Hm³</span><span>0</span><span>superávit ≥ +300 Hm³</span></div>';
+          + '<div class="legend-scale-labels"><span>'+tr('balance_deficit')+'</span><span>0</span><span>'+tr('balance_surplus')+'</span></div>';
       }
     }
   };
@@ -497,23 +659,27 @@ footer.bottom a { color: var(--link); }
 
   // ---------- Sidebar: theme options ----------
   const themeOptionsEl = document.getElementById('theme-options');
-  Object.keys(THEMES).forEach(key => {
-    const t = THEMES[key];
-    const div = document.createElement('label');
-    div.className = 'theme-option' + (key === currentTheme ? ' active' : '');
-    div.dataset.key = key;
-    div.innerHTML = '<input type="radio" name="theme" value="'+key+'" '+(key===currentTheme?'checked':'')+'>'+t.label+'<span class="desc">'+t.desc+'</span>';
-    div.querySelector('input').addEventListener('change', () => {
-      currentTheme = key;
-      document.querySelectorAll('.theme-option').forEach(el => el.classList.remove('active'));
-      div.classList.add('active');
-      renderLegend();
-      restyleLayer();
-      restyleRivers();
-      renderBoxplot();
+  function renderThemeOptions(){
+    themeOptionsEl.innerHTML = '';
+    Object.keys(THEMES).forEach(key => {
+      const th = THEMES[key];
+      const div = document.createElement('label');
+      div.className = 'theme-option' + (key === currentTheme ? ' active' : '');
+      div.dataset.key = key;
+      div.innerHTML = '<input type="radio" name="theme" value="'+key+'" '+(key===currentTheme?'checked':'')+'>'+th.label()+'<span class="desc">'+th.desc()+'</span>';
+      div.querySelector('input').addEventListener('change', () => {
+        currentTheme = key;
+        document.querySelectorAll('.theme-option').forEach(el => el.classList.remove('active'));
+        div.classList.add('active');
+        renderLegend();
+        restyleLayer();
+        restyleRivers();
+        renderBoxplot();
+      });
+      themeOptionsEl.appendChild(div);
     });
-    themeOptionsEl.appendChild(div);
-  });
+  }
+  renderThemeOptions();
 
   function renderLegend(){
     document.getElementById('legend-body').innerHTML = THEMES[currentTheme].legend();
@@ -540,18 +706,18 @@ footer.bottom a { color: var(--link); }
   function renderBoxplot(){
     let title = '', groups = [], tukey = false;
     if (currentTheme === 'obj') {
-      title = 'Balance de disponibilidad (Hm³/año) por clase de objetivo ambiental';
+      title = tr('box_obj_title');
       groups = ['A','B','C','D'].map(k => ({ label: k, color: OBJ_COLORS[k], stats: boxStats(feats.filter(f=>f.properties.env_obj===k).map(f=>f.properties.avail_balance)) }));
       tukey = true; // focus the axis on Q1-1.5·IQR .. Q3+1.5·IQR, as in Fig. 5a of the article
     } else if (currentTheme === 'feas') {
-      title = 'Puntaje de factibilidad (P) por categoría';
-      groups = FEAS_ORDER.filter(k=>k!=='Excluded').map(k => ({ label: FEAS_LABELS[k], color: FEAS_COLORS[k], stats: boxStats(feats.filter(f=>f.properties.feasibility===k).map(f=>f.properties.feas_score)) }));
+      title = tr('box_feas_title');
+      groups = FEAS_ORDER.filter(k=>k!=='Excluded').map(k => ({ label: FEAS_LABELS_F(k), color: FEAS_COLORS[k], stats: boxStats(feats.filter(f=>f.properties.feasibility===k).map(f=>f.properties.feas_score)) }));
     } else {
-      title = 'Balance de disponibilidad (Hm³/año), todas las cuencas';
-      groups = [{ label: 'Nacional (n=757)', color: '#0d5c5c', stats: boxStats(feats.map(f=>f.properties.avail_balance)) }];
+      title = tr('box_balance_title');
+      groups = [{ label: tr('box_national'), color: '#0d5c5c', stats: boxStats(feats.map(f=>f.properties.avail_balance)) }];
     }
     groups = groups.filter(g => g.stats);
-    document.getElementById('boxplot-title').textContent = title + (tukey ? ' (enfocado en Q1−1.5·RIC a Q3+1.5·RIC)' : '');
+    document.getElementById('boxplot-title').textContent = title + (tukey ? tr('box_tukey_suffix') : '');
     const W = 260, rowH = 34, padL = 8, padR = 8, plotW = W - padL - padR;
     const H = groups.length * rowH + 18;
     let lo, hi;
@@ -597,15 +763,18 @@ footer.bottom a { color: var(--link); }
 
   // ---------- Stats ----------
   function count(pred){ return feats.filter(pred).length; }
-  const stats = [
-    { n: count(f=>true), l: 'Cuencas totales' },
-    { n: count(f=>f.properties.has_env_reserve), l: 'Con reserva ambiental vigente' },
-    { n: count(f=>['Muy alta','Alta','Media'].includes(f.properties.feasibility)), l: 'Reservas potenciales factibles' },
-    { n: count(f=>f.properties.avail_balance !== null && f.properties.avail_balance < 0), l: 'En déficit de disponibilidad' },
-    { n: count(f=>f.properties.env_obj==='A'), l: 'Objetivo clase A' },
-    { n: count(f=>f.properties.env_obj==='D'), l: 'Objetivo clase D' }
-  ];
-  document.getElementById('stat-grid').innerHTML = stats.map(s => '<div class="stat"><div class="n">'+s.n+'</div><div class="l">'+s.l+'</div></div>').join('');
+  function renderStats(){
+    const stats = [
+      { n: count(f=>true), l: tr('stat_total') },
+      { n: count(f=>f.properties.has_env_reserve), l: tr('stat_reserve') },
+      { n: count(f=>['Muy alta','Alta','Media'].includes(f.properties.feasibility)), l: tr('stat_feasible') },
+      { n: count(f=>f.properties.avail_balance !== null && f.properties.avail_balance < 0), l: tr('stat_deficit') },
+      { n: count(f=>f.properties.env_obj==='A'), l: tr('stat_classA') },
+      { n: count(f=>f.properties.env_obj==='D'), l: tr('stat_classD') }
+    ];
+    document.getElementById('stat-grid').innerHTML = stats.map(s => '<div class="stat"><div class="n">'+s.n+'</div><div class="l">'+s.l+'</div></div>').join('');
+  }
+  renderStats();
 
   // ---------- Map ----------
   // Full/reset extent fixed to Mexico itself: initial view = max zoom-out level (zoom in only).
@@ -636,11 +805,11 @@ footer.bottom a { color: var(--link); }
         L.DomEvent.on(a, 'click', function(e){ L.DomEvent.stop(e); });
         return a;
       }
-      const zoomInBtn = btn('+', 'Acercar (zoom in)');
+      const zoomInBtn = btn('+', tr('tb_zoomin'));
       L.DomEvent.on(zoomInBtn, 'click', function(){ map.zoomIn(); });
-      const zoomOutBtn = btn('−', 'Alejar (zoom out)');
+      const zoomOutBtn = btn('−', tr('tb_zoomout'));
       L.DomEvent.on(zoomOutBtn, 'click', function(){ map.zoomOut(); });
-      const idBtn = btn('<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><line x1="16.2" y1="16.2" x2="21" y2="21"/></svg>', 'Identificador de rasgos (clic en el mapa)');
+      const idBtn = btn('<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><line x1="16.2" y1="16.2" x2="21" y2="21"/></svg>', tr('tb_identify'));
       idBtn.classList.add('toolbar-toggle', 'active');
       L.DomEvent.on(idBtn, 'click', function(){
         identifyActive = !identifyActive;
@@ -648,15 +817,17 @@ footer.bottom a { color: var(--link); }
         document.getElementById('map').classList.toggle('identify-cursor', identifyActive);
       });
       document.getElementById('map').classList.add('identify-cursor');
-      const extentBtn = btn('⤢', 'Extensión completa (México)');
+      const extentBtn = btn('⤢', tr('tb_extent'));
       L.DomEvent.on(extentBtn, 'click', function(){ map.fitBounds(FULL_EXTENT); });
       const northDiv = L.DomUtil.create('a', 'toolbar-north', bar);
-      northDiv.href = '#'; northDiv.title = 'Norte';
+      northDiv.href = '#'; northDiv.title = tr('tb_north');
       northDiv.innerHTML = '<svg width="16" height="20" viewBox="0 0 16 20"><polygon points="8,1 13,15 8,11.5 3,15" fill="#fff" stroke="#000" stroke-width="0.5"/></svg>';
       L.DomEvent.on(northDiv, 'click', function(e){ L.DomEvent.stop(e); });
+      toolbarBtns = { zoomInBtn, zoomOutBtn, idBtn, extentBtn, northDiv };
       return bar;
     }
   });
+  let toolbarBtns = null;
   map.addControl(new Toolbar());
 
   // Custom scale control (inline-styled, guaranteed visible against the dark basemap,
@@ -697,16 +868,17 @@ footer.bottom a { color: var(--link); }
   }
   const footerToggle = document.getElementById('footer-toggle');
   const footerMore = document.getElementById('footer-more');
+  let footerOpen = false;
   footerToggle.addEventListener('click', function(){
-    const open = footerMore.classList.toggle('open');
-    footerToggle.textContent = (open ? '▴' : '▾') + ' Créditos, financiamiento y licencia';
+    footerOpen = footerMore.classList.toggle('open');
+    footerToggle.textContent = (footerOpen ? '▴' : '▾') + ' ' + tr('footer_toggle_label');
     setTimeout(adjustFooterOffsets, 210); // after the CSS max-height transition
   });
   window.addEventListener('resize', adjustFooterOffsets);
 
   function fmt(v, unit){
-    if (v === null || v === undefined || v === '') return '—';
-    if (typeof v === 'number') return v.toLocaleString('es-MX', {maximumFractionDigits: 1}) + (unit ? ' '+unit : '');
+    if (v === null || v === undefined || v === '') return tr('dash');
+    if (typeof v === 'number') return v.toLocaleString(currentLang === 'en' ? 'en-US' : 'es-MX', {maximumFractionDigits: 1}) + (unit ? ' '+unit : '');
     return v;
   }
 
@@ -715,41 +887,43 @@ footer.bottom a { color: var(--link); }
   function identifyTableHtml(p){
     let html = '';
     html += '<h3>'+p.name+'</h3>';
-    html += '<div class="id-sub">Cuenca hidrológica · ID '+p.id+' · '+p.hr_name+' (RH'+p.hr_code+')</div>';
-    html += idRow('Estado(s)', p.state || '—');
-    html += idRow('Área', fmt(p.area_km2, 'km²'));
+    html += '<div class="id-sub">'+tr('id_hydro_basin')+' · ID '+p.id+' · '+p.hr_name+' (RH'+p.hr_code+')</div>';
+    html += idRow(tr('id_state'), p.state || tr('dash'));
+    html += idRow(tr('id_area'), fmt(p.area_km2, 'km²'));
 
     if (currentTheme === 'feas') {
-      html += '<div class="id-table-title">Tabla de atributos — Factibilidad de Reservas Potenciales de Agua</div>';
-      html += idRow('Categoría de factibilidad', FEAS_LABELS[p.feasibility] || p.feasibility || '—');
-      html += idRow('Puntaje ponderado (P)', p.feas_score != null ? p.feas_score : '— (excluida)');
-      html += idRow('Vacío de conservación (GEA)', es(p.gea) || '—');
-      html += idRow('Estrés hídrico', p.water_stress || '—');
-      html += idRow('Disponibilidad positiva', p.avail_positive ? 'Sí' : 'No');
-      html += idRow('Veda de agua (BAN)', p.has_ban || '—');
-      html += idRow('Distrito de riego', p.irrigation_district ? 'Sí' : 'No');
-      html += idRow('Presas registradas', p.has_dam ? p.num_dams : '0');
-      html += idRow('Reserva potencial público-urbana', p.has_pu_reserve ? ('Sí ('+p.pu_reserve_date+')') : 'No');
-      html += idRow('Población 2020', fmt(p.pop_2020, 'hab.'));
-      html += idRow('Densidad poblacional 2020', fmt(p.pop_density_2020, 'hab./km²'));
+      html += '<div class="id-table-title">'+tr('id_table_feas')+'</div>';
+      html += idRow(tr('id_feas_cat'), FEAS_LABELS_F(p.feasibility) || p.feasibility || tr('dash'));
+      html += idRow(tr('id_feas_score'), p.feas_score != null ? p.feas_score : tr('id_excluded_score'));
+      html += idRow(tr('id_gea'), es(p.gea) || tr('dash'));
+      html += idRow(tr('id_water_stress'), es(p.water_stress) || tr('dash'));
+      html += idRow(tr('id_avail_pos'), p.avail_positive ? tr('si') : tr('no'));
+      html += idRow(tr('id_ban'), p.has_ban || tr('dash'));
+      html += idRow(tr('id_irrigation'), p.irrigation_district ? tr('si') : tr('no'));
+      html += idRow(tr('id_dams'), p.has_dam ? p.num_dams : '0');
+      html += idRow(tr('id_pu_reserve'), p.has_pu_reserve ? (tr('si')+' ('+p.pu_reserve_date+')') : tr('no'));
+      html += idRow(tr('id_pop2020'), fmt(p.pop_2020, tr('unit_people')));
+      html += idRow(tr('id_popdens'), fmt(p.pop_density_2020, tr('unit_people_km2')));
     } else {
-      html += '<div class="id-table-title">Tabla de atributos — Objetivos Ambientales</div>';
-      html += idRow('Clase de objetivo ambiental', p.env_obj || '—');
-      html += idRow('Estado de conservación deseado', es(p.conserv_status) || '—');
-      html += idRow('Importancia ecológica', es(p.eco_importance) || '—');
-      html += idRow('Presión de uso del agua', es(p.pressure) || '—');
-      html += idRow('Valor de referencia (% EMA)', p.ewr_ref_pct != null ? p.ewr_ref_pct+'%' : '—');
-      html += idRow('Volumen de referencia', fmt(p.ewr_ref_vol, 'Hm³/año'));
+      html += '<div class="id-table-title">'+tr('id_table_obj')+'</div>';
+      html += idRow(tr('id_obj_class'), p.env_obj || tr('dash'));
+      html += idRow(tr('id_conserv'), es(p.conserv_status) || tr('dash'));
+      html += idRow(tr('id_ecoimp'), es(p.eco_importance) || tr('dash'));
+      html += idRow(tr('id_pressure'), es(p.pressure) || tr('dash'));
+      html += idRow(tr('id_refval'), p.ewr_ref_pct != null ? p.ewr_ref_pct+'%' : tr('dash'));
+      html += idRow(tr('id_refvol'), fmt(p.ewr_ref_vol, 'Hm³/año'));
       const dVal = (p.avail_balance != null && p.ewr_ref_vol != null) ? Math.round((p.avail_balance + p.ewr_ref_vol)*100)/100 : null;
-      html += idRow('Disponibilidad media anual (D)', fmt(dVal, 'Hm³/año'));
-      html += idRow('Balance (D − valor de referencia)', fmt(p.avail_balance, 'Hm³/año'));
-      html += idRow('Reserva ambiental vigente', p.has_env_reserve ? ('Sí ('+p.env_reserve_date+')') : (p.env_reserve_revoked ? 'Revocada' : 'No'));
-      if (p.has_env_reserve) html += idRow('Volumen de la reserva', fmt(p.env_reserve_vol, 'Hm³/año'));
+      html += idRow(tr('id_avail_d'), fmt(dVal, 'Hm³/año'));
+      html += idRow(tr('id_balance'), fmt(p.avail_balance, 'Hm³/año'));
+      html += idRow(tr('id_reserve_active'), p.has_env_reserve ? (tr('si')+' ('+p.env_reserve_date+')') : (p.env_reserve_revoked ? tr('revoked') : tr('no')));
+      if (p.has_env_reserve) html += idRow(tr('id_reserve_vol'), fmt(p.env_reserve_vol, 'Hm³/año'));
     }
     return html;
   }
 
+  let lastIdentifyProps = null;
   function openIdentifyPanel(p){
+    lastIdentifyProps = p;
     document.getElementById('identify-content').innerHTML = identifyTableHtml(p);
     document.getElementById('identify-panel').classList.add('open');
   }
@@ -805,7 +979,7 @@ footer.bottom a { color: var(--link); }
     style: riverStyle,
     onEachFeature: function(feature, layer){
       const p = feature.properties;
-      const tip = 'Orden '+p.riv_ord+' · '+fmt(p.dis_cms,'m³/s') + (p.basin ? (' · '+p.basin) : (' · '+p.country));
+      const tip = tr('riv_order_label')+' '+p.riv_ord+' · '+fmt(p.dis_cms,'m³/s') + (p.basin ? (' · '+p.basin) : (' · '+p.country));
       layer.bindTooltip(tip, { sticky: true, className: 'river-tip' });
       layer.on('mouseover', function(e){ e.target.setStyle({ weight: riverWeight(feature.properties) + 1.6 }); });
       layer.on('mouseout', function(e){ riverLayer.resetStyle(e.target); });
@@ -919,8 +1093,44 @@ footer.bottom a { color: var(--link); }
     });
   });
 
+  // ---------- Apply / switch language ----------
+  const langToggleBtn = document.getElementById('lang-toggle');
+  function applyLanguage(){
+    document.documentElement.lang = currentLang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      el.innerHTML = tr(el.getAttribute('data-i18n'));
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      el.placeholder = tr(el.getAttribute('data-i18n-placeholder'));
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(function(el){
+      el.title = tr(el.getAttribute('data-i18n-title'));
+    });
+    footerToggle.textContent = (footerOpen ? '▴' : '▾') + ' ' + tr('footer_toggle_label');
+    if (toolbarBtns) {
+      toolbarBtns.zoomInBtn.title = tr('tb_zoomin');
+      toolbarBtns.zoomOutBtn.title = tr('tb_zoomout');
+      toolbarBtns.idBtn.title = tr('tb_identify');
+      toolbarBtns.extentBtn.title = tr('tb_extent');
+      toolbarBtns.northDiv.title = tr('tb_north');
+    }
+    renderThemeOptions();
+    renderLegend();
+    renderStats();
+    renderBoxplot();
+    if (lastIdentifyProps) {
+      document.getElementById('identify-content').innerHTML = identifyTableHtml(lastIdentifyProps);
+    }
+    setTimeout(adjustFooterOffsets, 10);
+  }
+  langToggleBtn.addEventListener('click', function(){
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    applyLanguage();
+  });
+
   renderLegend();
   renderBoxplot();
+  applyLanguage();
 })();
 </script>
 </body>
